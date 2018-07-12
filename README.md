@@ -1,3 +1,9 @@
+# We changed home!
+
+**The project is now hosted on https://code.coppermine.io/eventsourcing/haskell-ges**
+
+**This repository is left as-is for backward-compability. We will no longer take issue or PR here**
+
 EventStore Haskell TCP client
 =============================
 
