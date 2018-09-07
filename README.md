@@ -1,6 +1,6 @@
 # We changed home!
 
-**The project is now hosted on https://code.coppermine.io/eventsourcing/haskell-ges**
+**The project is now hosted on https://gitlab.com/YoEight/eventstore-hs**
 
 **This repository is left as-is for backward-compability. We will no longer take issue or PR here**
 
