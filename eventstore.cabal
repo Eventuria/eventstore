@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c0a9a22394592ba6a26b9ed6d38458ffffeae0643b853c31009b1d589086aa10
+-- hash: e0b1ad406ec0406a5fe449a5f3fdcb1dfff49c812b7d473f74362b5ad4013f64
 
 name:           eventstore
 version:        1.3.0
@@ -113,6 +113,7 @@ library
     , lifted-base
     , monad-control
     , monad-logger >=0.3.20
+    , monad-loops
     , mono-traversable ==1.*
     , mtl
     , polysemy >=1.0
@@ -166,6 +167,7 @@ test-suite eventstore-tests
     , lifted-async
     , lifted-base
     , monad-control
+    , monad-loops
     , mono-traversable ==1.*
     , polysemy >=1.0
     , polysemy-plugin
