@@ -501,7 +501,7 @@ onArrived self@Internal{..} (PackageArrived conn pkg@Package{..}) = do
   unless (closedOrInit cur) $
     incrPackageNumber self
   -- /FIXME
-  $logDebug [i|Package received:  #{pkg}.|]
+  $logDebug [i|----------------- Package received:  #{pkg}.|]
 
   readIORef _stage >>= \case
     (onAuthentication -> Just att) -> do
