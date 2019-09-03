@@ -367,9 +367,6 @@ forceReconnect self@Internal{..} node = do
     closeTcpConnection self (ForceReconnect ept) conn
     att <- freshAttempt _stopwatch
 
-    -- We update the last pkg number to nullify the current heartbeat tracking.
-    atomicModifyIORef' _lastPkgNum $ \cur -> (cur + 1, ())
-
     atomicWriteIORef _stage (Connecting att EndpointDiscovery)
     $logInfo [i|#{conn}: going to reconnect to #{ept}.|]
     establish self ept
@@ -504,6 +501,7 @@ onArrived self@Internal{..} (PackageArrived conn pkg@Package{..}) = do
   unless (closedOrInit cur) $
     incrPackageNumber self
   -- /FIXME
+  $logDebug [i|Package received:  #{pkg}.|]
 
   readIORef _stage >>= \case
     (onAuthentication -> Just att) -> do
@@ -516,7 +514,7 @@ onArrived self@Internal{..} (PackageArrived conn pkg@Package{..}) = do
       clientIdentified self
 
     (runningConnection -> True) -> do
-      $logDebug [i|Package received:  #{pkg}.|]
+      -- $logDebug [i|Package received:  #{pkg}.|]
       handlePackage
 
     _ -> $logDebug [i|Package IGNORED: #{pkg}.|]
